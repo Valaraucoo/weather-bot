@@ -1,3 +1,4 @@
+name: Deploy SAM
 on:
   push:
     branches:
@@ -15,5 +16,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      - run: sam build --use-container
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name fb-weather-bot --region eu-central-1
+      - name: Build app using container
+        run: sam build --use-container
+      - name: Deploy app
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name fb-weather-bot --region eu-central-1 --s3-bucket 'aws-sam-cli-managed-default-samclisourcebucket-9ltz793xkajj' --capabilities CAPABILITY_IAM
