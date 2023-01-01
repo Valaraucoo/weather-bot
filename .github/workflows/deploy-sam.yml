@@ -5,18 +5,20 @@ on:
       - master
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: aws-actions/setup-sam@v1
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
-      - name: Build app using container
-        run: sam build --use-container
-      - name: Deploy app
-        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name fb-weather-bot --region eu-central-1 --s3-bucket 'aws-sam-cli-managed-default-samclisourcebucket-9ltz793xkajj' --capabilities CAPABILITY_IAM
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: for d in */ ; do cd $d && npm install --no-package-lock --loglevel=error && cd .. ; done
+    - uses: r0zar/sam-deploy-action@v1.4
+      env:
+        TEMPLATE: 'template.yaml'
+        AWS_STACK_NAME: fb-weather-bot
+        AWS_REGION: eu-central-1
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEPLOY_BUCKET: ${{ secrets.AWS_DEPLOY_BUCKET }}
+        CAPABILITIES: CAPABILITY_IAM
