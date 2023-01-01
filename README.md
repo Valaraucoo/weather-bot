@@ -1,10 +1,12 @@
-### Weather Bot 🤖for Facebook
+# Weather Bot for Facebook 🤖
 
 This is a simple bot that will tell you the weather in my hometown. It is a simple example of how to use the [Weather API](https://www.weatherapi.com/) to get the weather in a specific location.
 
 #### How it works?
 
 SAM is a framework that allows you to build serverless applications. It is a wrapper around CloudFormation and allows you to define your application using a simple template. The template is a JSON file that defines the resources that your application needs. In this case, we are using the AWS Lambda function to run our code and the CloudWatch Events to trigger the function.
+
+SAM automatically creates the necessary IAM roles and permissions for the resources that you define in the template. It also creates the CloudFormation stack for you.
 
 #### How to deploy?
 
