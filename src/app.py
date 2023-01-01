@@ -6,6 +6,8 @@ import requests
 
 
 page_id: Final[str] = "205621463221358"
+city: Final[str] = "Gorlice"
+
 region_name: Final[str] = "eu-central-1"
 
 
@@ -32,7 +34,7 @@ def retrieve_weather_api_access_key() -> str:
 
 def retrieve_weather() -> Dict:
     access_key = retrieve_weather_api_access_key()
-    response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={access_key}&q=Gorlice&aqi=no")
+    response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={access_key}&q={city}&aqi=no")
     return response.json()
 
 
