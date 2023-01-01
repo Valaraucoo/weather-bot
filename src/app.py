@@ -4,7 +4,6 @@ from typing import Dict, Final
 import boto3
 import requests
 
-
 page_id: Final[str] = "205621463221358"
 city: Final[str] = "Gorlice"
 
