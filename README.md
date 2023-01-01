@@ -1,6 +1,8 @@
-# Weather Bot for Facebook 🤖
+# Weather Bot for Facebook 🤖 ☀️ 
 
-This is a simple bot that will tell you the weather in my hometown. It is a simple example of how to use the [Weather API](https://www.weatherapi.com/) to get the weather in a specific location.
+This is a simple bot that will tell you the weather in my hometown. It is a simple example of how to use the [Weather API](https://www.weatherapi.com/) to get the weather in a specific location, e.g.
+
+<img width=600 src="https://kw-landing-page.s3.eu-central-1.amazonaws.com/SCR-20230101-px3.png" />
 
 #### How it works?
 
