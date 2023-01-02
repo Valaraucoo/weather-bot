@@ -38,7 +38,7 @@ Resources:
         WeatherBot:
           Type: Schedule
           Properties:
-            Schedule: cron(0 8,16 * * ? *)
+            Schedule: cron(0 7,15 * * ? *)
             Enabled: True
 
 Outputs:
